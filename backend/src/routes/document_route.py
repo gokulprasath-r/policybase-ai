@@ -8,8 +8,6 @@ router = APIRouter(
     tags=["Documents"]
 )
 
-
-
 @router.post("/upload",status_code=status.HTTP_200_OK,response_model=DocumentResponse)
 async def upload(file: UploadFile = File(...)):
     return await upload_document(file)
