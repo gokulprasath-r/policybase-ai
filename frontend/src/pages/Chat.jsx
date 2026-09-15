@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import ReactMarkdown from 'react-markdown';
 import { Link } from 'react-router-dom';
-const API_URL = 'http://localhost:8000';
+const API_URL = 'https://policybase-ai-api.vercel.app';
 
 function Chat() {
     const [input, setInput] = useState('');
