@@ -1,11 +1,7 @@
 
 from google import genai
-from dotenv import load_dotenv
-from database import pinecone
-
-load_dotenv();
-client = genai.Client()
-
+from src.config import GEMINI_API_KEY
+client = genai.Client(api_key=GEMINI_API_KEY)
 
 def generate_embedding(text: str):
     response = client.models.embed_content(

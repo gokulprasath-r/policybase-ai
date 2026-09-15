@@ -2,7 +2,7 @@ from src.database.pinecone import index
 from src.services.embedding_service import generate_embedding
 import os
 
-def upsertVector(chunks,filename):
+def upsert_vector(chunks,filename):
 
     for i,chunk in enumerate(chunks, start=1):
         vector = generate_embedding(chunk["text"])
@@ -20,3 +20,13 @@ def upsertVector(chunks,filename):
                     ]
                 )
     return index
+
+
+def delete_vectors(filename: str):
+    result = index.delete(
+        filter={
+            "filename": filename
+        }
+    )
+
+    return result

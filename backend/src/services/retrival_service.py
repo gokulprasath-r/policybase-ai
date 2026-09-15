@@ -1,5 +1,5 @@
 from src.database.pinecone import index
-
+from src.utils.logger import logger
 
 def retrive_answer(query_vector):
     result = index.query(
@@ -7,6 +7,8 @@ def retrive_answer(query_vector):
         top_k=3,
         include_metadata=True
     )
+
+    logger.info("Pinecone retrieval completed. Matches found: %s", len(result.matches))
 
     contexts = []
     sources = []
@@ -23,6 +25,8 @@ def retrive_answer(query_vector):
             if source not in sources:
                 sources.append(source)
 
+    logger.info("Relevant contexts found: %s", len(contexts))
+    
     if not contexts:
         return None
 
