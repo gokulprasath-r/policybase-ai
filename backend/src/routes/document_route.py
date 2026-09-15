@@ -1,6 +1,6 @@
 from fastapi import APIRouter, UploadFile, File, status
 
-from src.services.document_service import upload_document,get_all_documents,get_document,delete_document
+from src.services.document_service import upload_document,get_all_documents,get_document,delete_document,get_document_file
 from src.schemas.document_schema import DocumentResponse,DocumentMetaResponse,DocumentDeleteResponse
 
 router = APIRouter(
@@ -23,3 +23,7 @@ async def get_document_by_id(document_id: str):
 @router.delete("/{document_id}",response_model=DocumentDeleteResponse)
 async def delete_document_by_id(document_id: str):
     return await delete_document(document_id)
+
+@router.get("/{document_id}/file")
+async def get_document_file_by_id(document_id: str):
+    return await get_document_file(document_id)

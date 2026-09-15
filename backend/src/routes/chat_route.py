@@ -25,11 +25,17 @@ async def chat(request: ChatRequest):
     try:
         history = get_history(request.session_id)
 
+
+
+
+
+
+
         search_query = generate_search_query(
             request.input,
             history
         )
-
+        print(search_query)
         add_message(
             request.session_id,
             "user",
@@ -40,20 +46,20 @@ async def chat(request: ChatRequest):
 
         retrieval = retrive_answer(user_query_vector)
 
-        if retrieval is None:
+        # if retrieval is None:
 
-            answer = "I don't have information about that."
+        #     answer = "I don't have information about that."
 
-            add_message(
-                request.session_id,
-                "assistant",
-                answer
-            )
+        #     add_message(
+        #         request.session_id,
+        #         "assistant",
+        #         answer
+        #     )
 
-            return {
-                "result": answer,
-                "sources": []
-            }
+        #     return {
+        #         "result": answer,
+        #         "sources": []
+        #     }
 
         ans = generate_answer(
             request.input,

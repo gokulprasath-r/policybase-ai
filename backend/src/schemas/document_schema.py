@@ -11,7 +11,7 @@ class DocumentMetaResponse(BaseModel):
     document_id: str
     filename: str
     content_type: str
-    file_path: str
+    file_id: str
     status: str
     uploaded_at: datetime
 

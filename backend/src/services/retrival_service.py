@@ -26,9 +26,9 @@ def retrive_answer(query_vector):
                 sources.append(source)
 
     logger.info("Relevant contexts found: %s", len(contexts))
-    
-    if not contexts:
-        return None
+
+    # if not contexts:
+    #     return None
 
     return {
         "context": "\n\n".join(contexts),
